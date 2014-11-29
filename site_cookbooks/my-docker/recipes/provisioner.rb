@@ -25,9 +25,11 @@ end
 
 registry_password = Chef::DataBagItem.load("docker", "auth")
 
+username='jaibapna'
+
 docker_registry 'https://cdn-registry-1.docker.io/v1/' do
   email 'testaws199@gmail.com'
-  username 'jaibapna'
+  username '#{username}'
   password registry_password['registry_pwd']
   cmd_timeout 360
 end
