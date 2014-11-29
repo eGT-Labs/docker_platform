@@ -1,0 +1,37 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "ubuntu",
+      "export_path": "ubuntu_base.tar"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": ["sudo apt-get update",
+                "sudo apt-get -y install curl"
+      ]
+    },
+    {
+      "type": "chef-solo",
+      "cookbook_paths": ["cookbooks"],
+      "json": {
+        "name": "ubuntu_base",
+        "run_list": [
+          "recipe[dockworker::apache]"
+        ]
+      }
+    }
+  ],
+    "post-processors": [
+        [
+        {
+            "type": "docker-import",
+            "repository": "micgo/apache2",
+            "tag": "0.1"
+        },
+        "docker-push"
+    ]
+]
+}

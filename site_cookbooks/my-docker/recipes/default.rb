@@ -24,7 +24,7 @@ ssl_verify_mode :verify_none
 EOM
 
 machine "docker-container-#{time_str}" do
-	 files '/etc/chef/client.rb' => { :content =>"#{contant}"}
+	   file  '/etc/chef/client.rb' => { :content =>"#{contant}"}
      machine_options :docker_options => {
         :sudo=>true,
         :base_image => {
@@ -37,3 +37,5 @@ machine "docker-container-#{time_str}" do
       validator true
       recipe 'apache2'
 end
+
+
