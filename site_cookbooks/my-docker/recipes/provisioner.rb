@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+
+
 include_recipe 'docker'
 
 package "linux-image-extra-#{node[:kernel][:release]}" do
@@ -27,7 +29,7 @@ registry_password = Chef::DataBagItem.load("docker", "auth")
 
 username='jaibapna'
 
-docker_registry 'https://cdn-registry-1.docker.io/v1/' do
+docker_registry 'https://index.docker.io/v1/' do
   email 'testaws199@gmail.com'
   username '#{username}'
   password registry_password['registry_pwd']
