@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: dockworker
+# Cookbook Name:: my-docker
 # Recipe:: run_containers
 #
 # Copyright 2012-2014, Chef Software, Inc.
@@ -17,6 +17,6 @@
 # limitations under the License.
 #
 
-execute 'sudo docker run --detach=true --name="memcached_img" --publish="45001:11211" memcached_img' do
-  not_if 'docker ps | grep -qa memcached'
+execute 'sudo docker run --detach=true --name="example/docker-demo" --publish="45001:11211" example/docker-demo' do
+  not_if 'docker ps | grep -qa example/docker-dem'
 end
