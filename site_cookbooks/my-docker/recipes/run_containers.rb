@@ -16,7 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+image_name="docker-demo"
 
-execute 'sudo docker run --detach=true --name="example/docker-demo" --publish="45001:11211" example/docker-demo' do
-  not_if 'docker ps | grep -qa example/docker-dem'
+execute 'sudo docker run --detach=true --name="#{image_name}" --publish="45001:11211" #{image_name}' do
+  not_if 'docker ps | grep -qa #{image_name}'
 end

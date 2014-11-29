@@ -32,7 +32,7 @@ docker_registry 'https://index.docker.io/v1/' do
   cmd_timeout 360
 end
 
-docker_image 'example/docker-demo' do
+docker_image 'docker-demo' do
   retries 2
   tag 'latest'
   action :pull_if_missing
