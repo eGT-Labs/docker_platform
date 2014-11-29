@@ -23,7 +23,7 @@ package "linux-image-extra-#{node[:kernel][:release]}" do
   notifies :restart, 'service[docker]', :immediately
 end
 
-registry_password = Chef::EncryptedDataBagItem.load("docker", "auth")
+registry_password = Chef::DataBagItem.load("docker", "auth")
 
 docker_registry 'https://index.docker.io/v1/' do
   email 'testaws199@gmail.com'
