@@ -26,7 +26,7 @@ EOM
 machine "docker-container-#{time_str}" do
 	 files '/etc/chef/client.rb' => { :content =>"#{contant}"}
      machine_options :docker_options => {
-        sudo=>true
+        :sudo=>true,
         :base_image => {
         :name => 'ubuntu',
         :repository => 'ubuntu',
