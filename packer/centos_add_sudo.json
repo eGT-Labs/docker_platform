@@ -1,0 +1,26 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "centos",
+      "export_path": "centos_add_sudo.tar"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+                  "touch /root/this_is_a_static_file_from_touch",
+									"yum -y install sudo",
+									"#Disable Defaults requiretty in sudoers file",
+									"sed -i "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers",
+									"exit"
+                ]
+    },
+    {
+      "type": "file",
+			      "source": "/opt/mu/var/deployments/",
+						"destination": "/srv/www/htdocs/" 
+    }
+  ]
+}

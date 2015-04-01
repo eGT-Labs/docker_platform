@@ -1,0 +1,9 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "centos",
+      "commit": true
+    }
+  ]
+}

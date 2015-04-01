@@ -1,0 +1,35 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "centos",
+      "export_path": "centos_add_sudo.tar"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+                  "touch /root/this_is_a_static_file_from_touch",
+									"yum -y install sudo",
+									"exit"
+                ]
+    },
+    {
+      "type": "file",
+			      "source": "/opt/mu/var/deployments/",
+						"destination": "/srv/www/htdocs/" 
+    }
+  ],
+        "post-processors": [
+        [
+            {
+                "type": "docker-import",
+                "repository": "localhost:5000/centos_sudo",
+                "tag": "0.1"
+            },
+            "docker-push"
+        ]
+    ]
+
+}

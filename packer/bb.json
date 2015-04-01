@@ -1,0 +1,9 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "centos",
+      "export_path": "bb_clone.tar"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "centos",
+      "export_path": "centos_clone.tar"
+    }
+  ],
+	"post-processors": [
+        [
+            {
+                "type": "docker-import",
+                "repository": "localhost:5000/centos_clone",
+                "tag": "0.2"
+            },
+            "docker-push"
+        ]
+    ]
+}

@@ -1,0 +1,30 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "localhost:5000/centos_sudo:6.6",
+      "export_path": "centos_clone.tar"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "chef-solo",
+      "cookbook_paths": [
+        "../../vendor/cookbooks"
+      ],
+      "run_list": [
+        "git::default"
+      ],
+ 			"json": {
+        "grub_passwd": "hello"
+       }
+      },
+      {
+      "inline": [
+        "touch /root/packer_touched_me"
+      ],
+      "type": "shell"
+    }
+  ]
+
+}
