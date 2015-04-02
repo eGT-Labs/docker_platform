@@ -1,0 +1,41 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "localhost:5000/centos_sudo:6.6",
+      "export_path": "basic_node.tar"
+    }
+  ],
+  "provisioners": [
+{
+"type": "shell",
+"inline": ["mkdir /tmp/packer-chef-client",
+"chmod 0755 /tmp/packer-chef-client",
+"sudo mkdir -p /etc/chef/ohai/hints"
+]
+},
+    {
+      "type": "chef-client",
+			"server_url": "https://54.152.160.41/",
+	"validation_client_name": "mu-validator",
+	"validation_key_path": "/root/.chef/mu.org.key",
+	"node_name": "PackerBuild",
+	"config_template": "./template_client.rb",
+
+      "run_list": [
+        "git::default",
+				"role[mu-node]"
+      ],
+ 			"json": {
+        "grub_passwd": "hello"
+       }
+      },
+      {
+      "inline": [
+        "touch /root/packer_touched_me"
+      ],
+      "type": "shell"
+    }
+  ]
+
+}
