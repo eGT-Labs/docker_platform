@@ -7,3 +7,4 @@ validation_key "{{.ValidationKeyPath}}"
 {{end}}
 node_name "{{.NodeName}}"
 ssl_verify_mode :verify_none
+file_atomic_update false

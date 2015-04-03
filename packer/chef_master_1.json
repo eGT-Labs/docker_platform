@@ -17,7 +17,7 @@
     {
       "type": "chef-client",
 			"server_url": "https://54.152.160.41/organizations/mu",
-			"execute_command": "ls -l  /etc/chef; ls -l /tmp/packer-chef-client; cat /tmp/packer-chef-client/client.rb;cat /tmp/packer-chef-client/validation.pem;chef-client -l info --config /tmp/packer-chef-client/client.rb",
+			"execute_command": "sudo chef-client --no-color -c /tmp/packer-chef-client/client.rb -j /tmp/packer-chef-client/first-boot.json --config /tmp/packer-chef-client/client.rb",
 	"validation_client_name": "mu-validator",
 	"validation_key_path": "/etc/chef/validation.pem",
 	"node_name": "PackerBuild",
