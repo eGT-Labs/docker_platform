@@ -1,0 +1,8 @@
+---
+  appname: "demo"
+  servers: 
+    - 
+      name: "simple"
+      size: "m3.medium"
+      run_list:
+      - "recipe[docker]"

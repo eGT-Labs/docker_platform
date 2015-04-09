@@ -15,8 +15,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#include_recipe 'docker'
-docker_image 'rocker/rstudio'
+include_recipe 'docker'
+docker_image 'rocker/rstudio' do
+	action :pull_if_missing
+	cmd_timeout 600
+end
 
 docker_container 'rocker/rstudio' do
   detach true

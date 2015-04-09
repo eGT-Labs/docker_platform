@@ -1,0 +1,12 @@
+---
+  appname: "demo"
+  servers: 
+    - 
+      name: "simple"
+      size: "m3.medium"
+      run_list:
+      - "recipe[rstudio_base]"
+      ingress_rules:
+      - port: 8787
+        hosts:
+        - 0.0.0.0/0
