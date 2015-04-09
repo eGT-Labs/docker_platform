@@ -21,17 +21,6 @@ docker_image 'rocker/rstudio'
 docker_container 'rocker/rstudio' do
   detach true
   port '8787:8787'
-  env ['user=geocloud' 'password=geopass']
-  volume '/mnt/docker:/docker-storage'
+  env ['USER=geocloud','PASSWORD=geopass']
+	volume '/mnt/docker:/docker-storage'
 end
-=begin
-docker_image 'samalba/docker-registry'
-docker_container 'docker-registry' do
-  image 'samalba/docker-registry'
-  detach true
-  hostname 'docker-registry.example.com'
-  port '5000:5000'
-  env 'SETTINGS_FLAVOR=local'
-  volume '/mnt/docker:/docker-storage'
-end
-=end
